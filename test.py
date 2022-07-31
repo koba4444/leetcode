@@ -22,3 +22,7 @@ print(ll)
 ss = set(map(tuple,(p)))
 #print(ss)
 print(len(ss))
+
+
+number = 10.125
+print(f"{round(number):.2f}")
