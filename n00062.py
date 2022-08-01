@@ -8,25 +8,26 @@ class Solution:
     s[(2,2)] = 2
     def uniquePaths(self, m: int, n: int) -> int:
 
-        if m == 1 or n == 1:
+        if n == 1 or m == 1:
             s[(m, n)] = 1
-            s[(n, m)] = 1
             return 1
         if (m, n) in s.keys():
             return s[(m, n)]
+        elif (n, m) in s.keys():
+            return s[(n, m)]
 
         mm = min(m, n)
         nn = max(m, n)
-        near_half = (nn + 1) // 2
+        near_half = (nn) // 2
         ans = 0
         for i in range(1, mm + 1):
-            ans += (self. uniquePaths(i, near_half) *
-                    self.uniquePaths(mm + 1 - i, nn - near_half)
-                    )
+            u1 = (i == 1 or near_half == 1 or (self. uniquePaths(i, near_half)))
+            u2 = (mm + 1 - i == 1) or (nn - near_half == 1) or (self.uniquePaths(mm + 1 - i, nn - near_half))
+            ans += u1 * u2
 
-        s[(m, n)] = ans
+
         s[(n, m)] = ans
-        print(ans)
+        #print(ans)
         return ans
 
 
@@ -50,7 +51,7 @@ class Solution:
 if __name__ == "__main__":
     start_time = datetime.now()
     sol = Solution()
-    print(sol.uniquePaths(100, 100))
+    print(sol.uniquePaths(7, 3))
 
     end_time = datetime.now()
     print('Duration: {}'.format(end_time - start_time))
