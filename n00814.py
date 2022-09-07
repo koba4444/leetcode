@@ -20,34 +20,33 @@ import copy
 
 class Solution:
     def pruneTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        global answer
-        answer = copy.deepcopy(root)
-        print(answer)
-
+        # global answer
+        # answer = copy.deepcopy(root)
+        # print(answer)
         def prun_cur_root(r):
             if r is None:
                 return None
             r.left = prun_cur_root(r.left)
             r.right = prun_cur_root(r.right)
             if r.val == 0 and r.left == None and r.right == None:
-                print("Вершина вырезана", r)
-                print("answer after cutting", answer)
+                # print("Вершина вырезана", r)
+                # print("answer after cutting", answer)
                 return None
 
 
             else:
-                print(answer)
-                print(r.val)
-                print(r.left)
-                print(r.right)
-                print("++++++++++")
+                # print(answer)
+                # print(r.val)
+                # print(r.left)
+                # print(r.right)
+                # print("++++++++++")
                 return r
 
-        answer = prun_cur_root(answer)
-        print("=============")
-        print(answer)
-        print("=============")
-        return answer
+        # answer = prun_cur_root(answer)
+        # print("=============")
+        # print(answer)
+        # print("=============")
+        return prun_cur_root(root)
 
 
 if __name__ == "__main__":
