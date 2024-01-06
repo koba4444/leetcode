@@ -1,5 +1,7 @@
 
-
+"""
+speed up the following class
+"""
 
 """
 Too slow. Last 5%.
