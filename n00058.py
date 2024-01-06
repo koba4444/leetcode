@@ -1,4 +1,4 @@
-from datetime import datetime
+ from datetime import datetime
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         s = s.strip()
